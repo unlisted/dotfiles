@@ -30,6 +30,7 @@ Plugin 'rbgrouleff/bclose.vim'   "close a buffer without closing window
 Plugin 'gregsexton/gitv'         "gitk for vim 
 Plugin 'airblade/vim-gitgutter'  "show git diff in gutter
 Plugin 'fatih/vim-go'            "go plugin
+Plugin 'tmhedberg/SimpylFold'    " code folding
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -43,14 +44,22 @@ colorscheme codeblocks_dark
 set listchars=space:.,eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 "
-nnoremap <F4> :vsp<CR>
-nnoremap <F5> :close<CR>
-nnoremap <F9> :so ~/.vimrc<CR>
-nnoremap <leader>q :bw<CR>
+"nnoremap <F4> :vsp<CR>
+"nnoremap <F5> :close<CR>
+nnoremap <leader>so :so ~/.gvimrc<CR>
+nnoremap <leader>q  :bw<CR>
 nnoremap <leader>ws :set list!<CR>
 nnoremap <leader>rt :retab<CR>
 nnoremap <leader>cf :ClangFormat<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>bc :Bclose<CR>
 nnoremap <leader>sp :setlocal spell! spelllang=en_us<CR>
-"nnoremap <leader>cf :new :bar r! clang-format --style=WebKit %<CR>
+nnoremap <leader>nt :NERDTree ~/work<CR>
+nnoremap <leader>js :%!python -m json.tool<CR>
+
+" window nav
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
