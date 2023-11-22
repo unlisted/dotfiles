@@ -1,0 +1,39 @@
+ALIAS_FILE="~/.aliases"
+
+alias reconfig="source $ALIAS_FILE"
+
+# git
+alias gaa="git add --all"
+alias gbc="git branch --show-current"
+alias gc="git checkout"
+alias gcb="git checkout -b"
+alias gcm="git commit -m"
+alias gcurb='git branch | grep '\''*'\'' | awk '\''{ print $2 }'\'''
+alias glog="git log --oneline --decorate --graph"
+alias gpf="git push -f"
+alias gremain="git pull --rebase origin main"
+alias gst="git status"
+
+# docker
+alias dpsa="docker ps -a | tail -n +2 | awk '{ print \$1 }'"
+
+# paths
+DEVWORK=~/d/w
+NESSCARD="$DEVWORK/ness-card"
+NESSACTIVITY="$DEVWORK/ness-activity"
+NESSPLATFORM="$DEVWORK/ness-platform"
+NESSEVENTS="$DEVWORK/ness-events"
+alias ness-activity="cd $NESSACTIVITY"
+alias ness-card="cd $NESSCARD"
+alias ness-platform="cd $NESSPLATFORM"
+alias ness-events="cd $NESSEVENTS"
+
+# gcp aliases
+alias tundev='gcloud beta compute ssh precard-dev-bastion --tunnel-through-iap --project proj-exp-d-precard-be-601d --zone us-central1-a -- -L8888:127.0.0.1:8888 -L5433:172.21.0.8:5432'
+alias tunprod='gcloud beta compute ssh precard-prod-bastion --tunnel-through-iap --project proj-exp-p-precard-be-db81 --zone us-central1-a -- -L8888:127.0.0.1:8888 -L5434:10.18.0.2:5432'
+
+# psql
+# only works if tunnel has been created
+alias sqldev="psql -h localhost -p 5433 -U appuser -W precard"
+alias sqlprod="psql -h localhost -p 5434 -U appuser -W precard"
+alias sqllocal='psql -h localhost -p 5432 -U postgres -w precard'
